@@ -136,9 +136,10 @@ section[class^="top-"] {
     top: 0;
     right: 0;
     bottom: 0;
-    left: 15%;
-    width: 100%;
-    height: 100%;
+    $shift-width: 15%;
+    left: $shift-width;
+    width: calc($shift-width);
+    height: 105%;
     background-color: #fef6e8;
     z-index: -1;
     transform: skewY(-3deg);
