@@ -1,0 +1,211 @@
+@import "reset";
+@import "brack-point";
+@import "colors";
+@import "btn";
+@import "animation";
+@import "util";
+
+// initialize
+body {
+  box-sizing: border-box;
+  min-height: 100vh;
+  font-family: YuGothic, "Yu Gothic Medium", "Yu Gothic", "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+  font-size: 16px;
+  color: $black;
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  &:visited {
+    color: $black;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}
+img {
+  vertical-align: bottom;
+}
+%flex {
+  display: flex !important;
+}
+// clip-path
+.clip-text {
+  @include clip-text;
+}
+// scroll arrow object
+.arrow-box p {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: end;
+  letter-spacing: 0.2em;
+}
+.arrow {
+  width: 1px;
+  height: 70px;
+  margin: 20px auto;
+  background-color: $white;
+  position: relative;
+  overflow: hidden;
+}
+.arrow::before {
+  content: "";
+  width: 1px;
+  height: 100px;
+  margin: 50px auto 0;
+  background-color: $black;
+  position: absolute;
+  top: -150px;
+  left: 0;
+  -webkit-animation: arrow 1.5s ease 0s infinite normal;
+  animation: arrow 1.5s ease 0s infinite normal;
+}
+@keyframes arrow {
+  0% {
+    -webkit-transform: translate3d(-50%, 0, 0);
+    transform: translate3d(-50%, 0, 0);
+  }
+
+  60% {
+    -webkit-transform: translate3d(-50%, 100px, 0);
+    transform: translate3d(-50%, 100px, 0);
+  }
+
+  100% {
+    -webkit-transform: translate3d(-50%, 100px, 0);
+    transform: translate3d(-50%, 100px, 0);
+  }
+}
+.content-left {
+  width: 62.5%;
+  margin-right: auto;
+}
+.content-center {
+  width: 62.5%;
+  margin: 0 auto;
+}
+.content-right {
+  width: 62.5%;
+  margin-left: auto;
+}
+.content-outer {
+  width: 90%;
+  margin: 0 auto;
+}
+%shadow {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+// header
+$header-height: 90px;
+#header {
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+  background-color: #fff;
+  height: $header-height;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  #header-logo {
+    padding-top: 15px;
+    text-align: center;
+    img {
+      width: 200px;
+    }
+  }
+}
+.header-space {
+  height: $header-height;
+}
+// section header
+.section-header {
+  padding: 120px 0 100px;
+  line-height: 2;
+  margin: 0 auto;
+  color: $gray;
+  h2 {
+    font-weight: 500;
+    text-align: center;
+    position: relative;
+    span {
+      padding: 1.5em;
+      display: inline-block;
+      font-size: clamp(18px, 2vw, 30px);
+      font-family: "A-OTF 中ゴシックBBB Pr6N";
+      cursor: default;
+      @include change-scale;
+    }
+    div {
+      $line-weight: 1px;
+      background: $black;
+      position: absolute;
+      -webkit-transition: all 0.3s;
+      transition: all 0.3s;
+      &.bdT {
+        width: 100%;
+        height: $line-weight;
+        top: 0;
+        left: 0;
+      }
+      &.bdB {
+        width: 100%;
+        height: $line-weight;
+        bottom: 0;
+        right: 0;
+      }
+      &.bdR {
+        width: $line-weight;
+        height: 100%;
+        right: 0;
+        top: 0;
+      }
+      &.bdL {
+        width: $line-weight;
+        height: 100%;
+        left: 0;
+        bottom: 0;
+      }
+    }
+    &:hover .bdT,
+    &:hover .bdB {
+      width: 0;
+    }
+    &:hover .bdR,
+    &:hover .bdL {
+      height: 0;
+    }
+  }
+}
+// footer
+.footer {
+  text-align: center;
+  padding: 2em 0;
+  background: #222;
+  color: $white;
+}
+@media screen and (max-width: $brack-point-pc) {
+}
+@media screen and (max-width: $brack-point-tab) {
+  %flex {
+    display: block !important;
+  }
+  .content-left,
+  .content-center,
+  .content-right,
+  .content-outer {
+    width: 90%;
+  }
+  .display-pc {
+    display: none;
+  }
+}
+@media screen and (max-width: $brack-point-sp-l) {
+}
+@media screen and (max-width: $brack-point-sp) {
+  // section-header
+  .section-header {
+    h2 {
+      text-align: left;
+    }
+  }
+}

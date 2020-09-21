@@ -1,0 +1,241 @@
+@import "common/common";
+
+// top共通
+section[class^="top-"] {
+  @include fade-in;
+}
+[class^="top-info"] img {
+  @include fade-in(0.3s);
+  @extend %shadow;
+}
+// fv
+.top-fv {
+  cursor: default;
+  color: $white;
+  position: relative;
+  letter-spacing: 0.5em;
+  height: 780px;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  &__title-wrapper {
+    position: absolute;
+    top: 25%;
+    left: 5%;
+    line-height: 2;
+    z-index: 10;
+  }
+  &__title {
+    font-size: clamp(30px, 4vw, 40px);
+    font-family: "A-OTF 中ゴシックBBB Pr6N";
+    span {
+      display: block;
+      font-weight: bold;
+    }
+  }
+  &__subtitle {
+    margin-top: 1em;
+    font-size: clamp(20px, 2vw, 30px);
+  }
+  &__access {
+    position: absolute;
+    border: 1px $white solid;
+    padding: 1em 1.5em;
+    border-radius: 1em;
+    font-weight: bold;
+    letter-spacing: 0.2em;
+    bottom: 5%;
+    right: 5%;
+    line-height: 2;
+    z-index: 10;
+    transition: 0.1s;
+    &:hover {
+      border-top: 1px $white solid;
+      border-bottom: 3px $white solid;
+      border-left: 1px $white solid;
+      border-right: 3px $white solid;
+    }
+  }
+  &__arrow-wrap {
+    z-index: 10;
+    position: absolute;
+    top: 700px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    height: 200px;
+  }
+}
+// info1
+.top-info1 {
+  &__article {
+    @extend %flex;
+    margin-bottom: 100px;
+    img {
+      width: 60%;
+      object-fit: cover;
+    }
+    div {
+      margin: auto;
+      padding: 0 2em 2em;
+      text-align: center;
+      font-size: 18px;
+    }
+  }
+  &__article:nth-child(odd) {
+    img {
+      order: 2;
+    }
+    div {
+      order: 1;
+    }
+  }
+  &__article:nth-child(even) {
+    img {
+      order: 1;
+    }
+    div {
+      order: 2;
+    }
+  }
+}
+// info2
+.top-info2 {
+  position: relative;
+  font-size: 18px;
+  &__article-wrapper {
+    @extend %flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+    & > div:nth-child(1) {
+      margin-bottom: 100px;
+    }
+    & > div:nth-child(2) {
+      margin-top: 100px;
+    }
+  }
+  &__article {
+    text-align: center;
+    img {
+      width: 80%;
+      max-width: 600px;
+      object-fit: cover;
+    }
+    div {
+      margin: 2.5em auto;
+    }
+  }
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 15%;
+    width: 100%;
+    height: 100%;
+    background-color: #fef6e8;
+    z-index: -1;
+    transform: skewY(-3deg);
+  }
+}
+// banner
+.top-banner {
+  text-align: center;
+  margin: 140px auto 0;
+  position: relative;
+  @include cover-link;
+  p {
+    z-index: 10;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: clamp(20px, 2.5vw, 40px);
+    letter-spacing: 0.2em;
+    color: $white;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+  }
+  div {
+    margin-bottom: 40px;
+    @include change-scale(1.05, 1.05);
+  }
+  img {
+    width: 100%;
+  }
+}
+// contact
+.top-contact {
+  padding-bottom: 100px;
+  &__sns {
+    @extend %flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+    margin-bottom: 2em;
+    img {
+      width: 35px;
+      margin-right: 50px;
+      border-radius: 0.5em;
+    }
+  }
+  &__other {
+    text-align: center;
+    & > * {
+      margin-bottom: 1em;
+    }
+  }
+  &__tel {
+    $tel-size: 26px;
+    font-size: $tel-size;
+    vertical-align: middle;
+    margin-bottom: 20px;
+    img {
+      width: $tel-size;
+      transform: rotate(-30deg);
+    }
+  }
+}
+// モバイル
+@media screen and (max-width: $brack-point-pc) {
+}
+@media screen and (max-width: $brack-point-tab) {
+  .top-fv {
+    letter-spacing: 0.2em;
+  }
+  // info1
+  .top-info1 {
+    &__article {
+      img {
+        width: 100%;
+        margin: 0 auto;
+        text-align: center;
+      }
+    }
+  }
+  .top-contact {
+    &__sns {
+      text-align: center;
+      img {
+        margin: 0 10px 20px;
+      }
+    }
+  }
+}
+@media screen and (max-width: $brack-point-sp) {
+  // fv
+  .top-fv {
+    letter-spacing: 0;
+    &__title-wrapper {
+      position: absolute;
+      top: 25%;
+      left: 5%;
+    }
+  }
+}
